@@ -13,6 +13,8 @@ class BarangSatuan(db.Model):
     kilogram = db.Column(db.Numeric(10,0), default="0", server_default="0", nullable=False)
     publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
+    children = db.relationship("Barang", back_populates="parent")
+
     def to_json(self):
         json_barang_satuan = {
             'idsatuan': self.idsatuan,

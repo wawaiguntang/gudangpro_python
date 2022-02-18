@@ -20,4 +20,8 @@ from app.model.pendidikan import Pendidikan
 from app.model.status_bayar import StatusBayar
 from app.model.supplier import Supplier
 from app.model.staf import Staf
+from app.model.rekening_bank import RekeningBank
+from app.model.pelanggan import Pelanggan
+from app.model.barang import Barang
+from app.model.armada import Armada
 from app import routes 
