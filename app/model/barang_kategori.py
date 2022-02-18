@@ -12,13 +12,13 @@ class BarangKategori(db.Model):
     publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
     def to_json(self):
-        json_user = {
+        json_barang_katgori = {
             'idkategori': self.idkategori,
             'nmkategori': self.nmkategori,
             'publish': self.publish
         }
 
-        return json_user
+        return json_barang_katgori
 
     def __repr__(self):
         return '<BarangKategori {}>'.format(self.idkategori)  

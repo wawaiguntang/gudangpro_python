@@ -11,14 +11,16 @@ class Unit(db.Model):
     nmunit = db.Column(db.String(60), nullable=False)
     publish = db.Column(db.Enum(Publish),default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
+    children = db.relationship("Staf", back_populates="parent")
+
     def to_json(self):
-        json_user = {
+        json_unit = {
             'idunit': self.idunit,
             'nmunit': self.nmunit,
             'publish': self.publish
         }
 
-        return json_user
+        return json_unit
 
     def __repr__(self):
         return '<Unit {}>'.format(self.idunit)  

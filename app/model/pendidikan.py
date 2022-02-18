@@ -12,15 +12,17 @@ class Pendidikan(db.Model):
     alias = db.Column(db.String(50), nullable=True)
     publish = db.Column(db.Enum(Publish),default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
+    children = db.relationship("Staf", back_populates="parent")
+
     def to_json(self):
-        json_user = {
+        json_pendidikan = {
             'idpendidikan': self.idpendidikan,
             'nmpendidikan': self.nmpendidikan,
             'alias': self.alias,
             'publish': self.publish
         }
 
-        return json_user
+        return json_pendidikan
 
     def __repr__(self):
         return '<Pendidikan {}>'.format(self.idpendidikan)  

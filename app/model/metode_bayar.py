@@ -12,13 +12,13 @@ class MetodeBayar(db.Model):
     publish = db.Column(db.Enum(Publish),default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
     def to_json(self):
-        json_user = {
+        json_metode_bayar = {
             'idmetode_bayar': self.idmetode_bayar,
             'metode_bayar': self.metode_bayar,
             'publish': self.publish
         }
 
-        return json_user
+        return json_metode_bayar
 
     def __repr__(self):
         return '<MetodeBayar {}>'.format(self.idmetode_bayar)  

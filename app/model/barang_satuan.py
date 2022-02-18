@@ -14,7 +14,7 @@ class BarangSatuan(db.Model):
     publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
     def to_json(self):
-        json_user = {
+        json_barang_satuan = {
             'idsatuan': self.idsatuan,
             'nmsatuan': self.nmsatuan,
             'satuan' : self.satuan,
@@ -22,7 +22,7 @@ class BarangSatuan(db.Model):
             'publish': self.publish
         }
 
-        return json_user
+        return json_barang_satuan
 
     def __repr__(self):
         return '<BarangSatuan {}>'.format(self.idsatuan)  
