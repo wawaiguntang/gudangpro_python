@@ -1,6 +1,6 @@
 from app import db
 import enum
-import datetime
+from datetime import datetime  
 
 class Publish(enum.Enum):
     T = "T"
@@ -37,7 +37,7 @@ class Staf(db.Model):
     idpendidikan = db.Column(db.BigInteger, db.ForeignKey('tbl_pendidikan.idpendidikan'), default="0", server_default="0")
     parent = db.relationship("Pendidikan", back_populates="children")
 
-    rec_insert = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    rec_insert = db.Column(db.DateTime, default=datetime.utcnow ,onupdate=datetime.utcnow, nullable=False)
     rec_update = db.Column(db.DateTime, nullable=True )
 
     iduser = db.Column(db.BigInteger, db.ForeignKey('tbl_user.iduser'), default="0", server_default="0")
@@ -45,7 +45,9 @@ class Staf(db.Model):
 
     publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value,nullable=False)
     
+    children = db.relationship("Armada", back_populates="parent")
     
+
     def to_json(self):
         json_staf = {
             'idstaf': self.idstaf,

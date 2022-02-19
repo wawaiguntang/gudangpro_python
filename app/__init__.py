@@ -24,4 +24,8 @@ from app.model.rekening_bank import RekeningBank
 from app.model.pelanggan import Pelanggan
 from app.model.barang import Barang
 from app.model.armada import Armada
+from app.model.transaksi_penjualan import TransaksiPenjualan
+from app.model.transaksi_penjualan_detail import TransaksiPenjualanDetail
+from app.model.transaksi_penjualan_do import TransaksiPenjualanDo
+from app.model.transaksi_penjualan_pembayaran import TransaksiPenjualanPembayaran
 from app import routes 

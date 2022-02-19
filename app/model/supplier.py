@@ -1,6 +1,6 @@
 from app import db
 import enum
-import datetime
+from datetime import datetime  
 
 class Publish(enum.Enum):
     T = "T"
@@ -19,7 +19,7 @@ class Supplier(db.Model):
     provinsi = db.Column(db.String(50), default="LAMPUNG", server_default="LAMPUNG", nullable=True)
     negara = db.Column(db.String(50), default="INDONESIA", server_default="INDONESIA", nullable=True)
     deposit = db.Column(db.Integer, default="0", server_default="0", nullable=False)
-    rec_insert = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    rec_insert = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     rec_update = db.Column(db.DateTime, nullable=True )
 
     iduser = db.Column(db.BigInteger, db.ForeignKey('tbl_user.iduser'), default="0", server_default="0")

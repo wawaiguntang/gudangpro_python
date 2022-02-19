@@ -26,6 +26,9 @@ class User(db.Model):
     children = db.relationship("Staf", back_populates="parent")
     children = db.relationship("RekeningBank", back_populates="parent")
     children = db.relationship("Barang", back_populates="parent")
+    children = db.relationship("TransaksiPenjualan", back_populates="parent")
+    children = db.relationship("TransaksiPenjualanDetail", back_populates="parent")
+    children = db.relationship("TransaksiPenjualanPembayaran", back_populates="parent")
 
     def to_json(self):
         json_user = {

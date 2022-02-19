@@ -11,6 +11,8 @@ class ArmadaJenis(db.Model):
     nmjenis_armada = db.Column(db.String(60), nullable=False)
     publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
+    children = db.relationship("Armada", back_populates="parent")
+
     def to_json(self):
         json_armada_jenis = {
             'idjenis_armada': self.idjenis_armada,

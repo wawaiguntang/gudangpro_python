@@ -11,6 +11,8 @@ class StatusBayar(db.Model):
     status_bayar = db.Column(db.String(30), nullable=False)
     publish = db.Column(db.Enum(Publish),default=Publish.T.value, server_default=Publish.T.value, nullable=False)
 
+    children = db.relationship("TransaksiPenjualanPembayaran", back_populates="parent")
+
     def to_json(self):
         json_status_bayar = {
             'idstatus_bayar': self.idstatus_bayar,

@@ -1,6 +1,6 @@
 from app import db
 import enum
-import datetime
+from datetime import datetime  
 
 class Publish(enum.Enum):
     T = "T"
@@ -19,12 +19,15 @@ class Pelanggan(db.Model):
     negara = db.Column(db.String(50), default="INDONESIA", server_default="INDONESIA", nullable=True)
     deposit = db.Column(db.Integer, default="0", server_default="0", nullable=False)
     p_discount = db.Column(db.Integer, default="0", server_default="0", nullable=False)
-    rec_insert = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
+    rec_insert = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     rec_update = db.Column(db.DateTime, nullable=True )
+    
     iduser = db.Column(db.BigInteger, db.ForeignKey('tbl_user.iduser'), default="0", server_default="0")
-    publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value,nullable=False)
     parent = db.relationship("User", back_populates="children")
     
+    publish = db.Column(db.Enum(Publish), default=Publish.T.value, server_default=Publish.T.value,nullable=False)
+    
+    children = db.relationship("TransaksiPenjualan", back_populates="parent")
     
     def to_json(self):
         json_pelanggan = {
